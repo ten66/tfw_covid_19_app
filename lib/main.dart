@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:tfw_covid_19_app/constant.dart';
 
 void main() {
@@ -39,6 +42,7 @@ class HomeScreen extends StatelessWidget {
           ClipPath(
             clipper: MyClipper(),
             child: Container(
+              padding: EdgeInsets.only(left: 40, top: 50, right: 20),
               height: 350,
               width: double.infinity,
               decoration: const BoxDecoration(
@@ -53,6 +57,38 @@ class HomeScreen extends StatelessWidget {
                 image: DecorationImage(
                   image: AssetImage('assets/images/virus.png'),
                 ),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Align(
+                    alignment: Alignment.topRight,
+                    child: SvgPicture.asset('assets/icons/menu.svg'),
+                  ),
+                  const SizedBox(height: 20),
+                  Expanded(
+                    child: Stack(
+                      children: [
+                        SvgPicture.asset(
+                          'assets/icons/Drcorona.svg',
+                          width: 230,
+                          fit: BoxFit.fitWidth,
+                          alignment: Alignment.topCenter,
+                        ),
+                        Positioned(
+                          top: 20,
+                          left: 150,
+                          child: Text(
+                            'All you need \nis stay at home.',
+                            style:
+                                kHeadingTextStyle.copyWith(color: Colors.white),
+                          ),
+                        ),
+                        Container(),
+                      ],
+                    ),
+                  ),
+                ],
               ),
             ),
           )
